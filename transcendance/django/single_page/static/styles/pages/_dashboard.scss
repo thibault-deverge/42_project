@@ -1,0 +1,210 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+.dashboard__title {
+    text-transform: uppercase;
+    font-size: var.$large-font-size;
+
+    @include mix.respond(small) {
+        font-size: 2.7rem;
+    }
+
+    @include mix.respond(xsmall) {
+        font-size: 1.9rem;
+    }
+}
+
+.demo__container {
+    width: 100%;
+    max-width: 800px;
+
+    @include mix.respond(large) {
+        display: none;
+    }
+}
+
+#demo__game {
+    width: 100%;
+    height: auto; 
+    display: block;
+    border: 1px solid var.$color-tertiary;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+}
+
+.leaderboard {
+    margin-top: 3rem;
+    margin-right: 3rem;
+    width: 75%;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+
+    @include mix.respond(large) {
+        margin: 0;
+    }
+
+    &__container {
+        background-color: var.$color-secondary;
+        padding: 4rem 3.3rem;
+        border-radius: 1.4rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @include mix.respond(large) {
+            padding: 2rem 1.6rem;
+            gap: .8rem;
+        }
+    }
+
+    &__headings {
+        width: 100%;
+        
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+        @include mix.respond(small) {
+            gap: 1rem;
+        }
+    }
+
+    &__title {
+        text-transform: uppercase; 
+        font-family: var.$font-primary;
+        font-size: 2.3rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        color: var.$color-black;
+
+    }
+
+    &__icon {
+        display: inline;
+        fill: var.$color-tertiary;
+        margin-right: auto;
+    }
+
+    &__win {
+        color: var.$color-black;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: var.$font-primary;
+        font-size: var.$small-font-size;
+        margin-right: 1.7rem;
+        margin-top: .6rem;
+    }
+
+    &__element {
+        background-color: var.$color-primary-light;
+        padding: 1.1rem 2.3rem;
+        border-radius: 1.4rem;
+
+        display: flex;
+        gap: 1.4rem;
+
+        transition: all .2s;
+
+        &:hover {
+            background-color: var.$color-tertiary;
+            transform: scale(1.01);
+            color: var.$color-secondary;
+            text-transform: uppsercase;
+
+            & .leaderboard__rank {
+                color: var.$color-secondary;
+            }
+        }
+    }
+
+    &__rank {
+        color: var.$color-tertiary;
+        font-weight: bold;
+    }
+
+    &__username {
+        text-transform: lowercase;
+        font-family: var.$font-secondary;
+        margin-right: auto;
+    }
+
+    &__user {
+        font-size: var.$small-font-size;
+        font-style: italic;
+    }
+
+    &__total-win {
+
+    }
+}
+
+.rules {
+    display: flex;
+    gap: 1.6rem;
+
+    &__bubble {
+        position: relative;
+        background-color: var.$color-secondary;
+        border-radius: 47%;
+        padding: 3.6rem;
+        align-self: flex-start;
+        border: 2px solid var.$color-tertiary;
+
+        transition: transform .2s;
+
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            right: -1rem;
+            bottom: 2.9rem;
+            width: 0px;
+            height: 0px;
+            border-top: 0px solid transparent;
+            border-bottom: 35px solid transparent;
+            border-right: 35px solid var.$color-secondary;
+            transform: rotate(-45deg);
+
+            @include mix.respond(xsmall) {
+                bottom: 3.7rem;
+                border-bottom: 25px solid transparent;
+                border-right: 25px solid var.$color-secondary;
+            }
+        }
+
+
+        &:hover {
+            transform: scale(1.15);
+        }
+
+        @include mix.respond(large) {
+            padding: 3.2rem;
+        }
+        
+        @include mix.respond(xsmall) {
+            padding: 2.7rem;
+        }
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var.$color-black;
+
+        @include mix.respond(large) {
+            font-size: 1.2rem;
+        }
+    }
+
+    &__image {
+        width: 20rem;
+        height: auto;
+
+        @include mix.respond(large) {
+            width: 18rem;
+        }
+
+        @include mix.respond(xsmall) {
+            width: 16rem;
+        }
+    }
+}

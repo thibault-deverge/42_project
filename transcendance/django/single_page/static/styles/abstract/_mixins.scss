@@ -1,0 +1,27 @@
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == xsmall {
+        @media (max-width: 30em) { @content };    //400px
+    }
+    @if $breakpoint == small {
+        @media (max-width: 37.5em) { @content };    //600px
+    }
+    @if $breakpoint == chat-mobile {
+        @media (max-width: 55rem) { @content };    //600px
+    }
+    @if $breakpoint == medium {
+        @media (max-width: 65em) { @content };     //1150px
+    }
+    @if $breakpoint == hamburger {
+        @media (max-width: 84em) { @content };    // 1475px
+    }
+    @if $breakpoint == large {
+        @media (max-width: 87em) { @content };    // 1500px
+    }
+    @if $breakpoint == xlarge {
+        @media (max-width: 95em) { @content };    // 1520px
+    }
+    @if $breakpoint == xxlarge {
+        @media (max-width: 112em) { @content };    // 1940px
+    }
+}

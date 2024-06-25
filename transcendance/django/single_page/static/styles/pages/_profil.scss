@@ -1,0 +1,295 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+.couverture {
+    position: relative;
+    overflow: hidden;
+    width: 92%;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 4rem;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+
+    @include mix.respond(medium) {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    &__picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__button {
+        position: absolute;
+        bottom: 2rem;
+        right: 7rem;
+
+        font-family: var.$font-primary;
+        font-size: 1.6rem;
+        font-weight: bold;
+        outline: none;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        z-index: 2;
+
+        @include mix.respond(medium) {
+            font-size: 1.3rem;
+        }
+
+        @include mix.respond(small) {
+            font-size: 1rem;
+            bottom: 1rem;
+            right: 3rem;
+        }
+    }
+
+    &__icon {
+        color: var.$color-black;
+        width: 2rem;
+        height: auto;
+
+        @include mix.respond(small) {
+            width: 1.2rem;
+        }
+    }
+}
+
+.user {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: -2rem;
+
+    display: flex;
+    gap: 3rem;
+
+    @include mix.respond(small) {
+        margin-top: 0;
+    }
+
+    &__photo {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        overflow: hidden;
+
+        @include mix.respond(medium) {
+            width: 8rem;
+            height: 8rem;
+        }
+
+        @include mix.respond(small) {
+            position: absolute;
+            bottom: 10rem;
+            left: 2rem;
+            width: 6rem;
+            height: 6rem;
+        }
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        & button {
+            position: absolute;
+            bottom: 0rem;
+            left: 0rem;
+            outline: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+
+            @include mix.respond(medium) {
+                bottom: 3rem;
+            }
+
+            @include mix.respond(xsmall) {
+                display: none;
+            }
+
+            & img {
+                width: 1.2rem;
+            }
+        }
+    }
+
+    &__username {
+        margin-top: 7rem;
+        margin-right: 2rem;
+        align-self: center;
+
+        display: flex;
+        gap: .5rem;
+
+        @include mix.respond(medium) {
+            margin-top: 3.5rem;
+        }
+
+        & p {
+            font-size: 3rem;
+            letter-spacing: .2rem;
+
+            @include mix.respond(medium) {
+                font-size: 2.5rem;
+            }
+        }
+
+        & button {
+        color: white;
+        outline: none;
+        margin-left: 1rem;
+        margin-top: .6rem;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+
+            & img {
+                width: 2.5rem;
+
+                @include mix.respond(small) {
+                    width: 2rem;
+                }
+            }
+        }
+    }
+
+    &__input-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 38rem;
+    }
+
+    &__username-input {
+        display:none;
+        font-size: 1.9rem;
+        color: var.$color-secondary;
+        background-color: transparent;
+        max-width: 16rem;
+        height: 4rem;
+        padding: 1rem;
+        margin-top: 1rem;
+        margin-right: -1rem;
+        border: 1px solid rgba(var.$color-secondary, .6);
+        border-radius: .6rem;
+        box-shadow: 3px 3px 2px rgba(var.$color-black, .2);
+
+        &:focus {
+            color: var.$color-secondary;
+            background-color: transparent;
+            transition: .1s;
+            transition-property: box-shadow; 
+        }
+    }
+
+    &__input-error.user__input-error {
+        display: none;
+        color: red;
+        font-size: 1.2rem;
+
+        @include mix.respond(medium) {
+            font-size: 1rem;
+        }
+    }
+
+    & #saveUserBtn, #cancelUserBtn {
+        display: none;
+    }
+
+    &__quote {
+        align-self: center;
+        margin-top: 7.2rem;
+
+        display: flex;
+        gap: .5rem;
+
+        @include mix.respond(medium) {
+            margin-top: 3.5rem;
+            display: none;
+        }
+
+        @include mix.respond(small) {
+            display: none;
+        }
+
+        & p {
+            margin-top: .8rem;
+            font-weight: lighter;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: rgba(var.$color-white, .6);
+
+            @include mix.respond(small) {
+                font-size: 1.1rem;
+            }
+        }
+
+        & button {
+        outline: none;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+
+            & img {
+                width: 2rem;
+            }
+        }
+
+        & #saveQuoteBtn, & #cancelQuoteBtn {
+            margin-top: 1rem;
+            display: none;
+        }
+
+    }
+
+    &__quote-input {
+        display:none;
+        font-size: 1.9rem;
+        color: var.$color-secondary;
+        background-color: transparent;
+        max-width: 30rem;
+        height: 2.4rem;
+        padding: 1rem;
+        margin-top: 1rem;
+        // margin-right: -1rem;
+        border: 1px solid rgba(var.$color-secondary, .6);
+        border-radius: .6rem;
+        box-shadow: 3px 3px 2px rgba(var.$color-black, .2);
+
+        &:focus {
+            color: var.$color-secondary;
+            background-color: transparent;
+            transition: .1s;
+            transition-property: box-shadow; 
+        }
+    }
+}
+
+.stat-resume {
+    width: 95%;
+    margin: 0 auto;
+
+    display: flex;
+    gap: 4rem;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mix.respond(large) {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+}
+
+.leaderboard--profile {
+    @include mix.respond(large) {
+        margin: 1rem auto;
+    }
+}

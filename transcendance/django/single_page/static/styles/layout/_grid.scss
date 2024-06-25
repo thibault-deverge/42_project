@@ -1,0 +1,155 @@
+@use "../abstract/mixins" as mix;
+
+.container {
+    display: grid;
+    min-height: 100vh;
+
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "main";
+
+    &--with-navbar {
+        padding: 0;
+        grid-template-rows: 8rem 1fr;
+        grid-template-areas: 
+            "navbar"
+            "main";
+
+        @include mix.respond(medium) {
+            grid-template-rows: 8rem 1fr;
+        }
+    }
+}
+
+.welcome-grid {
+    grid-area: main;
+
+    display: grid;
+    grid-template-rows: 6rem 1fr;
+    grid-template-columns: repeat(12, 1fr);
+
+    justify-items: center;
+    align-items: center;
+
+    background-attachment: fixed;
+
+    @include mix.respond(medium) {
+        grid-template-rows: 6rem max-content 1fr;
+    }
+}
+
+.dashboard-grid {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    &__left {
+        grid-column: 1 / 2;
+        margin-left: 2rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        @include mix.respond(large) {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__right {
+        grid-column: 2 / 3;
+        margin-right: 2rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        @include mix.respond(large) {
+            grid-column: 1 / -1;
+            margin-right: 0;
+        }
+    }
+
+    @include mix.respond(large) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 10fr;
+    }
+}
+
+.profile-grid {
+    grid-area: main;
+
+    display: grid;
+    grid-template-rows: 24rem 9rem 1fr 10rem;
+    grid-template-columns: 1fr;
+    
+    @include mix.respond(medium) {
+        grid-template-rows: 15rem 10rem 1fr;
+    }
+
+    @include mix.respond(small) {
+        grid-template-rows: 12rem 8rem 1fr;
+    }
+
+    .couverture {
+        grid-row: 1 / 2;
+        grid-column: 1 / -1;
+    }
+
+    .user {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
+    }
+
+    .stat-resume {
+        grid-row: 3 / span 1;
+        grid-column: 1 / -1;
+    }
+}
+
+.chat-grid {
+    grid-area: main;
+    margin: 2rem 6rem;
+
+    display: grid;
+    grid-template-columns: minmax(min-content, 30rem) 1fr;
+    grid-template-rows: 1fr;
+
+    @include mix.respond(chat-mobile) {
+        margin: 1rem 2.5rem;
+        grid-template-rows: min-content 1fr;
+    }
+
+    .chatnav {
+        grid-row: 1 / span 1;
+        grid-column: 1 / span 1;
+
+        @include mix.respond(chat-mobile) {
+            grid-row: 1 / span 1;
+            grid-column: 1 / -1;
+        }
+    }
+
+    .chat {
+        grid-row: 1 / span 1;
+        grid-column: 2 / span 1;
+
+        @include mix.respond(chat-mobile) {
+            // display: none;
+            grid-row: 2 / span 1;
+            grid-column: 1 / -1;
+        }
+    }
+}
+
+.leaderboard-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.statistic-grid {
+    grid-area: main;
+}

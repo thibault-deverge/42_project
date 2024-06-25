@@ -1,0 +1,223 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+.navbar {
+    grid-area: navbar;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2.5rem;
+    margin-right: 0 auto;
+
+    &__loader {
+          position: relative;
+          height: 40px;
+          width: 6px;
+          color: #DDA15E;
+          animation: paddles 1.2s ease-out infinite;
+          opacity: 0;
+          @media (max-width: 50em) {
+            height: 25px;
+          }
+      }
+
+      &__loader:before {
+          content: "";
+          position: absolute;
+          margin: 0 auto;
+          left: 0;
+          right: 0;
+          top: 15px;
+          width: 12px;
+          height: 12px;
+          background-color: #FEFAE0;
+          border-radius: 50%;
+          animation: ballbounce 1s ease-out infinite;
+          @media (max-width: 50em) {
+             width: 9px;
+             height: 9px;
+          }
+      }
+
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    &__element {
+        padding: 1.8rem 4rem;
+        transition: background-color .2s;
+
+        &.active {
+            background-color: var.$color-tertiary;
+        }
+    }
+
+    &__element:not(:last-of-type):hover {
+        background-color: var.$color-tertiary;
+        color: var.$color-secondary;
+    }
+
+    &__link {
+        font-family: var.$font-primary;
+        font-size: 2.4rem;
+        text-decoration: none;
+
+        &:hover {
+            color: var.$color-secondary;
+        }
+
+        @include mix.respond(xxlarge) {
+            font-size: 1.8rem;
+        }
+
+        @include mix.respond(xlarge) {
+            font-size: 1.5rem;
+        }
+    }
+
+    & .hamburger {
+        display: none;
+
+        &__bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all .3s ease-in-out;
+            background-color: var.$color-secondary;
+        }
+    }
+
+    @include mix.respond(hamburger) {
+
+        &__list {
+            position: fixed;
+            left: -100%;
+            top: 9rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(var.$color-black, 0.95);
+            width: 96%;
+            gap: 0;
+            border-radius: 6px;
+            text-align: center;
+            transition: .3s;
+            box-shadow: 0 10px 27px rgba(0,0,0,0.2);
+            z-index: 3;
+        }
+
+        &__list.hamburger-active {
+            left: 2%;
+            z-index: 6;
+        }
+
+        &__element {
+            width: 45%;
+            padding: 2rem 0;
+            margin: 1rem 0;
+        }
+
+        &__element:not(:last-of-type):hover {
+            background-color: var.$color-tertiary;
+            color: var.$color-secondary;
+        }
+
+        & .btnLogout {
+            margin: 0 auto;
+        }
+
+        & .hamburger {
+            display: block;
+            cursor: pointer;
+        }
+
+        & .hamburger.hamburger-active .hamburger__bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        & .hamburger.hamburger-active .hamburger__bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        & .hamburger.hamburger-active .hamburger__bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+    }
+}
+
+.inQueue
+{
+    opacity: 100%;
+}
+
+.btnLogout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+  }
+  
+  /* plus sign */
+  .btnLogout__sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btnLogout__sign svg {
+    width: 17px;
+  }
+  
+  .btnLogout__sign svg path {
+    fill: white;
+  }
+  /* text */
+  .btnLogout__text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+  }
+  /* hover effect on button width */
+  .btnLogout:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+  }
+  
+  .btnLogout:hover .btnLogout__sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+  }
+  /* hover effect button's text */
+  .btnLogout:hover .btnLogout__text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+  }
+  /* button click effect*/
+  .btnLogout:active {
+    transform: translate(2px ,2px);
+  }

@@ -1,0 +1,53 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+.page404 {
+    width: 75%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    &__container-gif {
+        display: flex;
+    }
+
+    &__gif {
+        margin-right: 3rem;
+
+        &--rickroll {
+            width: 30rem;
+        }
+
+        @include mix.respond(medium) {
+            display: none;
+        }
+    }
+
+    &__container-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__code {
+        font-size: var.$large-font-size;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 2.7rem;
+    }
+
+    &__paragraph {
+
+    }
+
+    &__link, &__link:link, &__link:visited, &__link:focus {
+        text-decoration: none;
+    }
+}

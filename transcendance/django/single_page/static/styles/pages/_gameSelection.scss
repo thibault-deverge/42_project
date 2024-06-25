@@ -1,0 +1,267 @@
+@use "../abstract/variables" as var;
+
+.GameModeSelection {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 50em) {
+        display: none;
+    }
+}
+
+.GameModeSelection_text {
+    text-align: center;
+    text-shadow: #DDA15E 1px 0 10px;
+    letter-spacing: .5rem;
+}
+
+.double-border {
+    border: .2rem solid #fefae0;
+    position: relative;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    position: relative;
+}
+
+.double-border:before {
+    border: .1rem solid #fefae0;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: -.1rem;
+    right: -.1rem;
+    bottom: 5px;
+}
+
+.double-border::after {
+    border: .1rem solid #fefae0;
+    content: "";
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: -.1rem;
+    right: -.1rem;
+    bottom: 8px;
+}
+
+.gameBtnContainer {
+    width: 100%;
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    @media (max-width: 50em) {
+        height: 100%;
+        gap: 2rem;
+        flex-direction: column;
+    }
+}
+
+.gamebutton {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    color: #DBF8FF;
+    font-size: 1.8vw;
+    letter-spacing: 0.12em;
+    font-weight: bold;
+    width: 20%;
+    font-family: var.$font-primary;
+
+    border: 2px solid #000;
+    box-shadow: var.$color-black 1px 0 10px;
+    -webkit-text-stroke: #DDA15E 1px;
+    text-shadow: var.$color-black 1px 0 10px;
+    @media (max-width: 50em) {
+        width: 80%;
+        height: 20%;
+        margin: 0 auto;
+    }
+}
+
+.gamebutton:active {
+    opacity: 0.8;
+}
+
+.btnText {
+    position: absolute;
+    bottom: 0;
+}
+
+.btnDescription {
+    color: #DBF8FF;
+    -webkit-text-stroke: #000 0px;
+    opacity: 0.6;
+    padding-bottom: 1.5rem;
+    font-size: 1vw;
+}
+
+.gamebutton:hover {
+    border: 2px solid #FEFAE0;
+    text-shadow: var.$color-primary-light 1px 0 10px;
+    box-shadow: #DDA15E 1px 0 10px;
+    transition: border 0.3s, box-shadow 0.7s;
+}
+
+.filterGray {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.queue {
+    animation: breathing 1.5s ease-in-out infinite alternate;
+    filter: grayscale(70%);
+    filter: blur(0.3rem);
+
+}
+
+.loader:has(+.queue)
+{
+    opacity: 100%;
+    z-index: 5;
+}
+
+#localBtn {
+    background: url("/static/images/local.png") no-repeat center center;
+    background-size: cover;
+}
+
+#onlineBtnFilter {
+    background: url("/static/images/online.png") no-repeat center center;
+    background-size: cover;
+}
+
+#tournamentBtnFilter {
+    background: url("/static/images/btnTournament.png") no-repeat center center;
+    background-size: cover;
+}
+
+#iaBtn {
+    background: url("/static/images/ia.png") no-repeat center center;
+    background-size: cover;
+}
+
+#localBtn, #iaBtn {
+    @media (max-width: 50em) {
+        background: linear-gradient(to bottom, #461F37, #1F3F46);
+        font-size: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    & .btnText {
+        @media (max-width: 50em) {
+            position: relative;
+            
+        }    
+        & .btnDescription {
+            @media (max-width: 50em) {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+#tournamentBtnFilter, #onlineBtnFilter {
+    @media (max-width: 50em) {
+        background: linear-gradient(to bottom, #461F37, #1F3F46);
+        font-size: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    & .btnText {
+        @media (max-width: 50em) {
+            position: relative;
+            
+        }    
+        & .btnDescription {
+            @media (max-width: 50em) {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.loader {
+    position: absolute;
+    left: 49.4%;
+    top: 40%;
+    height: 40px;
+    width: 6px;
+    color: #DDA15E;
+    animation: paddles 1.2s ease-out infinite;
+    opacity: 0;
+
+}
+  
+.loader:before {
+    content: "";
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 15px;
+    width: 12px;
+    height: 12px;
+    background-color: #FEFAE0;
+    border-radius: 50%;
+    animation: ballbounce 1s ease-out infinite;
+}
+
+  
+@keyframes paddles {
+    0% {
+        box-shadow: -25px -10px, 25px 10px
+    }
+
+    50% {
+        box-shadow: -25px 8px, 25px -10px
+    }
+
+    100% {
+        box-shadow: -25px -10px, 25px 10px
+    }
+}
+  
+@keyframes ballbounce {
+    0% {
+        transform: translateX(-20px) scale(1, 1.2)
+    }
+
+    25% {
+        transform: scale(1.2, 1)
+    }
+
+    50% {
+        transform: translateX(15px) scale(1, 1.2)
+    }
+
+    75% {
+        transform: scale(1.2, 1)
+    }
+
+    100% {
+        transform: translateX(-20px)
+    }
+}
+
+@keyframes breathing {
+    0% {
+        box-shadow: #DDA15E 1px 0 10px;
+    }
+
+    100% {
+        box-shadow: #DDA15E 1px 0 50px;
+    }
+}

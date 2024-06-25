@@ -1,0 +1,11 @@
+@keyframes rotating {
+    0% {
+      transform: rotateY(45deg);
+    }
+    50% {
+      transform: rotateY(225deg);
+    }
+    100% {
+      transform: rotateY(45deg);
+    }
+  }

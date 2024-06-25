@@ -1,0 +1,151 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+/*
+-------- FORM BUTTON ---------
+*/
+.button {
+    font-family: var.$font-primary;
+    font-weight: bold;
+    background-color: var.$color-secondary;
+    color: var.$color-black;
+    cursor: pointer;
+    padding: 1.2rem 3.3rem;
+    outline: none;
+    border: none;
+    border-radius: 1.5rem;
+
+    transition: all 0.2s;
+
+    @include mix.respond(small) {
+        font-size: 1.4rem;
+        padding: 1.2rem 2.5rem;
+    }
+
+    &:hover {
+      background-color: var.$color-tertiary;
+      color: var.$color-primary-dark;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+  
+    &:active {
+      transform: translateY(-1px); 
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); 
+    }
+
+    &--login {
+        min-width: fit-content;
+        width: 35%;
+        padding: 1.3rem 2rem;
+    }
+}
+
+/*
+-------- LOGOUT BUTTON ---------
+*/
+.btnLogout {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+}
+
+.btnLogout__sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnLogout__sign svg {
+  width: 17px;
+}
+
+.btnLogout__sign svg path {
+  fill: white;
+}
+.btnLogout__text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+.btnLogout:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.btnLogout:hover .btnLogout__sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+
+.btnLogout:hover .btnLogout__text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+
+.btnLogout:active {
+  transform: translate(2px ,2px);
+}
+
+/*
+-------- CHAT USER BUTTON ---------
+*/
+.chat-user-btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  & img {
+    width: 2.3rem;
+    height: 2.3rem;
+
+    @include mix.respond(chat-mobile) {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+}
+
+/*
+-------- ADD FRIEND BUTTON ---------
+*/
+.user__friend-btn {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  height: max-content;
+  border: none;
+  margin-top: 7.9rem;
+  align-self: center;
+
+  @include mix.respond(medium) {
+    margin-top: 4.5rem;
+  }
+
+  & img {
+    width: 2.3rem;
+    height: auto;
+  }
+}

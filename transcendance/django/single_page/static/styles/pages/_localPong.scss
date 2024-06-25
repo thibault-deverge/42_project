@@ -1,0 +1,103 @@
+#gameContainer {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+}
+
+#board {
+    max-width: 65%;
+    max-height: 80%;
+    outline: #DDA15E 2px solid;
+}
+
+#leftCol, #rightCol {
+    height: 80%;
+    max-width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playerName {
+    font-family: "Orbitron", serif;
+    align-self: flex-start;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 2rem;
+    word-wrap: break-word;
+    width: 100%;
+    @media (max-width: 50em) {
+        margin: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+.btnDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.btnKeyboard {    
+    box-sizing: border-box;
+    font-size: 3.5rem;
+    text-align: center;
+    width: 7rem;
+    height: 6.5rem;
+    color: #555;
+    cursor: pointer;
+    margin: 3rem;
+    border-color: #f2f2f2;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-radius: 1rem;
+    background: -webkit-linear-gradient(top, #f9f9f9 0%, #D2D2D2 80%, #c0c0c0 100%);
+    font-family: sans-serif;
+    display: inline-block;
+    transition: box-shadow 0.3s ease, transform 0.15s ease;
+    box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(#444, 0.4), 2px 1px 4px rgba(#444, 0.25), -2px 1px 4px rgba(#444, 0.25), 0 9px 16px rgba(#444, 0.1);
+    
+    &:hover,
+    &:focus {
+      box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 4px 0 #C0C0C0, 0 2px 35px rgba(#444, 0.3), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 7px 4px rgba(#444, 0.1);
+      transform: translateY(2px);
+    }
+    
+    &:active {
+      box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 0 0 #C0C0C0, 0 0px 30px rgba(#444, 0.15), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 0px 4px rgba(#444, 0.25);
+      transform: translateY(4px); 
+    }
+
+  }
+
+@media (max-width: 50em) {
+    #gameContainer {
+        height: 90vw;
+        transform: rotate(-90deg);
+    }
+    #mainGame {
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+    }
+    #board {
+        max-width: 80%;
+    }
+    .btnKeyboard {
+        width: 6rem;
+        height: 5rem;
+        font-size: 2.5rem;
+        margin: 1.5rem;
+    }
+}

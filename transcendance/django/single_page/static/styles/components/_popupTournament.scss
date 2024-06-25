@@ -1,0 +1,59 @@
+@use "../abstract/variables" as var;
+
+.popup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    padding-bottom: 2rem;
+    gap: 0.5rem;
+    background-color: #fefae0;
+    border: 2px solid #d68c45;
+    border-radius: 10px;
+    box-shadow: #DDA15E 1px 0 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 20;
+    animation: breathing 1.5s ease-in-out infinite alternate,fade 3s linear 0s 1 forwards;
+}
+
+.titlePopup {
+    font-family: var.$font-primary;
+
+    font-weight: bold;
+    font-size: 3.5rem;
+    color: rgb(31 41 55);
+    @media (max-width: 60em) {
+        font-size: 2rem;
+    }
+}
+
+.popupDescription {
+    font-size: 2rem;
+    font-weight: bold;
+
+    margin-top: 1rem;
+    line-height: 1.25rem;
+    color: rgb(75 85 99);
+    @media (max-width: 60em) {
+        font-size: 1.5rem;
+    }
+}
+
+#name1, #name2 {
+    color: #d68c45;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}

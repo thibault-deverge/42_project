@@ -1,0 +1,1 @@
+[{"inputs":[],"name":"getAllAddresses","outputs":[{"internalType":"address[]","name":"","type":"address[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"addr","type":"address"}],"name":"storeNewAddress","outputs":[],"stateMutability":"nonpayable","type":"function"}]

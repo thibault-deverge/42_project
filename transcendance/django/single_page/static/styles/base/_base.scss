@@ -1,0 +1,51 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 1rem = 10px
+    // font-size: 55.5%; // 1rem = 10px
+
+    @include mix.respond(large) {
+        font-size: 56.25%;
+    }
+
+    @include mix.respond(medium) {
+        font-size: 50%;
+    }
+
+    @include mix.respond(small) {
+        font-size: 42%;
+    }
+}
+
+body {
+    font-family: var.$font-primary;
+    font-size: var.$default-font-size;
+    color: var.$color-secondary;
+    padding: 3rem;
+    font-weight: 400;
+    line-height: 1.7;
+    background: linear-gradient(to bottom right, var.$color-primary-dark, var.$color-primary-light);
+    background-attachment: fixed !important;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: var.$large-font-size;
+}
+
+p {
+    font-family: var.$font-secondary;
+}
+
+a {
+    font-weight: bold;
+    color: inherit;
+    text-decoration: underline;
+    transition: all .2s;
+
+    &:hover {
+        color: var.$color-tertiary;
+    }
+}

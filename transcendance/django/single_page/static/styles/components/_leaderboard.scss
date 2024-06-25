@@ -1,0 +1,195 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+.leaderboard {
+    margin-top: 3rem;
+    margin-right: 3rem;
+    width: 75%;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+
+    @include mix.respond(medium) {
+        margin: 4rem auto;
+    }
+
+    &--full {
+        box-shadow: none;
+        margin-top: 2rem;
+        margin-right: 2rem;
+        width: 45%;
+        
+        @include mix.respond(medium) {
+            margin: .5rem auto;
+            width: 60%;
+        }
+
+        @include mix.respond(small) {
+            width: 85%;
+        }
+    }
+
+    &__container {
+        background-color: var.$color-secondary;
+        min-height: 35rem;
+        max-height: 45rem;
+        padding: 4rem 3.3rem;
+        border-radius: 1.4rem;
+        overflow: auto;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @include mix.respond(large) {
+            min-height: 30rem;
+            padding: 2rem 1.6rem;
+            gap: .8rem;
+        }
+
+        @include mix.respond(hamburger) {
+            margin-top: 1.5rem;
+        }
+
+        &--full {
+            min-height: 50rem;
+            max-height: 75rem;
+        }
+
+        &--dashboard {
+            max-height: 40rem;
+            overflow: hidden;
+        }
+    }
+
+    &__headings {
+        width: 100%;
+        
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+        @include mix.respond(small) {
+            gap: 1rem;
+        }
+    }
+
+    &__title {
+        text-transform: uppercase; 
+        font-family: var.$font-primary;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        color: var.$color-black;
+
+        @include mix.respond(small) {
+            font-size: 1.7rem;
+            margin-left: 0;
+        }
+    }
+
+    &__icon {
+        display: inline;
+        fill: var.$color-tertiary;
+        margin-right: auto;
+    }
+
+    &__win {
+        color: var.$color-black;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: var.$font-primary;
+        font-size: var.$small-font-size;
+        margin-right: 1.7rem;
+        margin-top: .6rem;
+    }
+
+    &__element {
+        background-color: var.$color-primary-light;
+        padding: .9rem 2rem;
+        border-radius: 1.4rem;
+
+        display: flex;
+        gap: 1.4rem;
+        align-items: center;
+
+        transition: all .2s;
+
+        &:hover {
+            background-color: var.$color-tertiary;
+            transform: scale(1.01);
+            color: var.$color-secondary;
+            text-transform: uppsercase;
+
+            & .leaderboard__rank {
+                color: var.$color-secondary;
+            }
+        }
+    }
+
+    &__photo {
+        width: 3.3rem;
+        height: 3.3rem;
+        border-radius: 50%;
+        object-fit: cover;
+
+        @include mix.respond(medium) {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+
+    &__rank {
+        color: var.$color-tertiary;
+        font-weight: bold;
+    }
+
+    &__username {
+        text-transform: uppercase;
+        font-family: var.$font-primary;
+        font-size: 2.1rem;
+        margin-right: auto;
+
+        @include mix.respond(medium) {
+            font-size: 1.4rem;
+        }
+    }
+
+    &__user {
+        font-size: var.$small-font-size;
+        font-style: italic;
+    }
+
+    &__total-win {
+
+    }
+
+    &__color {
+        display: inline-block;
+        width: .7rem;
+        height: 3rem;
+        align-self: center;
+
+        @include mix.respond(large) {
+            width: .5rem;
+            height: 3rem;
+        }
+
+        &--win {
+            background-color: var.$color-green-light;
+        }
+
+        &--lose {
+            background-color: var.$color-error;
+        }
+    }
+
+    &__result {
+        min-width: max-content;
+    }
+
+    &__connect-status {
+        background-color: var.$color-green-light;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 50%;
+    }
+}

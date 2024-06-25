@@ -1,0 +1,88 @@
+@use "../abstract/mixins" as mix;
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    margin-top: 3rem;
+
+    @include mix.respond(large) {
+        margin: 4rem 0;
+    }
+}
+
+/*
+ ***** Footer Button *****
+*/
+.footer__button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: .3s;
+    overflow: hidden;
+    position: relative;
+
+    @include mix.respond(medium) {
+        width: 35px;
+        height: 35px;
+    }
+  }
+  
+  .svgIcon {
+    width: 10px;
+    transition-duration: .3s;
+  }
+  
+  .svgIcon path {
+    fill: white;
+  }
+  
+  .footer__button:hover {
+    width: 110px;
+    border-radius: 50px;
+    transition-duration: .3s;
+    background-color: rgb(255, 69, 69);
+    align-items: center;
+    transform: translateY(-5px);
+  }
+
+  .footer__button:active {
+    transform: translateY(-1px); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); 
+  }
+  
+  .footer__button:hover .svgIcon {
+    width: 40px;
+    transition-duration: .3s;
+    transform: translateY(60%);
+  }
+  
+  .footer__button::before {
+    position: absolute;
+    top: -20px;
+    content: "Delete Profil";
+    color: white;
+    transition-duration: .3s;
+    font-size: 1.4px;
+  }
+  
+  .footer__button:hover::before {
+    font-size: 14px;
+    opacity: 1;
+    transform: translateY(30px);
+    transition-duration: .3s;
+
+    @include mix.respond(medium) {
+        font-size: 12px;
+    }
+  }

@@ -1,0 +1,145 @@
+@use "../abstract/mixins" as mix;
+@use "../abstract/variables" as var;
+
+.welcome {
+    width: 85%;
+    grid-column: 2 / span 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    @include mix.respond(large) {
+        width: 90%;
+    }
+
+    @include mix.respond(medium) {
+        grid-column: 2 / -2;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    &__heading {
+        @include mix.respond(medium) {
+            font-size: 3.2rem;
+            margin-top: 3.5rem;
+            text-align: center;
+        }
+        @include mix.respond(small) {
+            font-size: 2.6rem;
+        }
+
+    }
+
+    &__storytelling {
+        text-justify: inter-word;
+
+        @include mix.respond(medium) {
+            display: none;
+        }
+    }
+
+    &__image {
+        width: 34rem;
+        height: auto;
+        align-self: center;
+        transition: all .6s;
+
+        &:hover {
+            animation: rotating 3s linear infinite;
+        }
+
+        @include mix.respond(xlarge) {
+            width: 30rem;
+        }
+
+        @include mix.respond(medium) {
+            display: none;
+        }
+    }
+}
+
+.form-container {
+    background-color: rgba(var.$color-black, 0.35);
+    border-radius: 5rem;
+    margin: 6rem 0;
+    align-self: stretch;
+    overflow: hidden;
+
+    width: 90%;
+    grid-column: span 5;
+
+    @include mix.respond(medium) {
+        grid-column: 1 / -1;
+        margin: 8rem;
+    }
+
+    &form {
+        display: none;
+        opacity: 0;
+        transition: opacity .2s ease;
+    }
+
+    &form .active {
+        opacity: 1;
+        display: flex;
+    }
+
+
+    & .login-form {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4.5rem;
+
+        & .button:nth-child(1) {
+            margin-top: 2.5rem;
+        }
+
+        &__delimitation {
+            font-weight: bold;
+            color: var.$color-white;
+        }
+
+        &__input-container {
+            align-self: stretch;
+
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        &__signup {
+            font-weight: bold;
+            font-family: var.$font-primary;
+            font-size: var.$small-font-size;
+            margin-bottom: 2.5rem;
+        }
+
+
+    }
+
+
+    & .signup-form {
+        width: 100%;
+        height: 100%;
+
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4.5rem;
+
+        &__cancel {
+            font-size: var.$small-font-size;
+        }
+    }
+}

@@ -1,0 +1,86 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+.recent-match {
+    display: flex;
+    flex-direction: column !important;
+
+    & .user-link:hover {
+        color: var.$color-secondary;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: var.$color-primary-light !important;
+        color: var.$color-secondary !important;
+    }
+
+    &__summary {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    &__expand {
+        display: none;
+        width: 100%;
+
+        & p {
+            font-weight: 700;
+            color: var.$color-tertiary;
+            margin: .4rem 0;
+
+            & span {
+                font-weight: 400;
+                color: var.$color-secondary;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.recent-match__active .recent-match__expand {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.recent-match-chart {
+    width: 100%;
+    min-width: 15rem;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+
+    &__element {
+        padding: .7rem 1.2rem;
+        margin: 1.2rem .3rem;
+        margin-bottom: 1.4rem;
+
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        & p {
+            color: var.$color-secondary;
+            font-size: .9rem;
+        }
+    }
+
+    &__win {
+        width: .8rem;
+        height: .8rem;
+        border-radius: 50%;
+        background-color: var.$color-green-light;
+    }
+
+    &__lose {
+        width: .8rem;
+        height: .8rem;
+        border-radius: 50%;
+        background-color: var.$color-error;
+    }
+}

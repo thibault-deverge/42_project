@@ -1,0 +1,15 @@
+asgiref==3.7.2
+Django==5.0.2
+sqlparse==0.4.4
+typing_extensions==4.10.0
+djangorestframework==3.14.0
+django-debug-toolbar==4.3.0
+django-cors-headers==4.3.1
+django-browser-reload==1.12.1
+psycopg2-binary>=2.8
+Pillow
+channels==4.0.0
+channels_redis==4.2.0
+requests
+web3
+django-cors-headers

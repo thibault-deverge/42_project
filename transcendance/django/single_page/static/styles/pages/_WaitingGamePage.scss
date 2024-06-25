@@ -1,0 +1,55 @@
+.ball {
+  position: relative;
+  bottom: 5em;
+  left: calc(100% - 2em);
+  width: 5em;
+  height: 5em;
+  background: #fff;
+  border-radius: 50%;
+  animation: ball-move8234 3s ease-in-out 1s infinite alternate;
+}
+
+.ball::after {
+  position: absolute;
+  content: '';
+  top: 2.5em;
+  right: 0.5em;
+  width: 0.5em;
+  height: 0.5em;
+  background: #000;
+  border-radius: 50%;
+}
+
+.bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20em;
+  height: 1.25em;
+  background: #FFDAAF;
+  border-radius: 3em;
+  transform: rotate(-15deg);
+  animation: up-down6123 3s ease-in-out 1s infinite alternate;
+}
+
+@keyframes up-down6123 {
+  from {
+    transform: rotate(-15deg);
+  }
+
+  to {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes ball-move8234 {
+  from {
+    left: calc(100% - 40px);
+    transform: rotate(360deg);
+  }
+
+  to {
+    left: calc(0% - 20px);
+    transform: rotate(0deg);
+  }
+}

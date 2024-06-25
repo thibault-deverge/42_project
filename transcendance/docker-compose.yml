@@ -1,0 +1,120 @@
+version: '3'
+
+services:
+  django:
+    container_name: django
+    networks:
+      - ft_transcendence
+    volumes:
+      - django:/django/
+      - static_volume:/django/static
+    build:
+      context: ./docker/django
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./docker/.env
+    depends_on:
+      - postgres
+    tty: true
+    restart: always
+
+  daphne:
+    container_name: daphne
+    networks:
+      - ft_transcendence
+    build:
+      context: ./docker/daphne
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    env_file:
+      - ./docker/.env
+    volumes:
+      - django:/django/
+      - static_volume:/django/static
+    depends_on:
+      - postgres
+    tty: true
+    restart: always
+
+  redis:
+    image: redis:7
+    networks:
+      - ft_transcendence
+    restart: always
+    depends_on:
+    - django
+    command: --port 6380
+    ports:
+      - "6380:6380"
+    expose:
+      - "6380"
+
+  nginx:
+    container_name: nginx
+    build: ./docker/nginx
+    networks:
+      - ft_transcendence
+    ports:
+      - 8443:443
+    volumes:
+      - static_volume:/static
+      - django:/django/
+    depends_on:
+      - django
+
+  postgres:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ft_transcendence
+    env_file:
+      - ./docker/.env
+    ports:
+      - "5432:5432"
+
+  adminer:
+    container_name: adminer
+    networks:
+      - ft_transcendence
+    image: adminer
+    depends_on:
+      - postgres
+    restart: always
+    ports:
+      - 8080:8080
+
+  blockchain:
+    container_name: blockchain
+    volumes:
+    - blockchain_data:/database
+    networks:
+      - ft_transcendence
+    image: trufflesuite/ganache
+    restart: always
+    ports:
+      - 8545:8545
+    command: ["-g", "1","--db", "/database", "-i", "1234", "-d", "--account_keys_path", "/database/account"]
+
+volumes:
+  django:
+    driver: 'local'
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './django'
+  static_volume:
+  postgres_data:
+  blockchain_data:
+    driver: 'local'
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './django/blockchain/db'
+
+networks:
+  ft_transcendence:
+    driver: bridge

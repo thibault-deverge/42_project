@@ -1,0 +1,15 @@
+@use "../abstract/variables" as var;
+@use "../abstract/mixins" as mix;
+
+.user-link:hover {
+    font-weight: bold;
+    cursor: pointer;
+    color: var.$color-primary-light;
+    text-decoration: underline;
+}
+
+.leaderboard-link:hover {
+    cursor: pointer;
+    color: var.$color-primary-light;
+    text-decoration: underline;
+}
